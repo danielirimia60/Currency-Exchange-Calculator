@@ -1,5 +1,6 @@
 ##### Currency exchange calculator #####
 
+## Function to check if a number is a whole number ##
 def checkWholeNumber (message1, message2):
     while True:
         try:
@@ -9,6 +10,7 @@ def checkWholeNumber (message1, message2):
         else:
             return wholeNumber
 
+## Function to check if a number is a decimal number ##
 def checkDecimalNumber (message1, message2):
     while True:
         try:
@@ -18,6 +20,7 @@ def checkDecimalNumber (message1, message2):
         else:
             return decimalNumber
 
+## Function to check if the input is 'y' or 'n' ##
 def checkYesNo (message1, message2):
     while True:
         yesNo = input(message1)
@@ -26,8 +29,9 @@ def checkYesNo (message1, message2):
         else:
             print(message2)
 
-
+## Function to display the initial menu and get the conversion option ##
 def getOptions ():
+    print("##### Currency exchange calculator #####")
     chooseOption = "Choose an exchange option: "
     optionError = "The option selected does not exist. Please try again."
     while True:
@@ -42,6 +46,7 @@ def getOptions ():
         else:
             print(optionError)
 
+## Function to get the conversion rate and currency ##
 def conversionRate ():
     option = getOptions ()
     
@@ -65,7 +70,7 @@ def conversionRate ():
         
     return finalOption, exchangeCurrency
 
-
+## Function to get the amount to be exchanged ##
 def getInitialAmount ():
     enterInitialAmount = "Enter the amount to be exchanged: "
     initialAmountError = "Wrong value introduced. Please try again."
@@ -76,13 +81,14 @@ def getInitialAmount ():
         else:
             print(initialAmountError)
 
-
+## Function that asks the users if they want to change the initial conversion rate ##
 def changeConversionRate ():
     answerInput = "Do you want to change the exchange rate?(y/n) "
     answerError = "The answer selected does not exist. Please only use ‘y’ for yes and ‘n’ for no."
     answer = checkYesNo(answerInput, answerError)
     return answer
 
+## Function to get the new conversion rate ##
 def newConversionRate ():
     newConversionRateInput = "Enter the new conversion rate: "
     newConversionRateError = "Wrong value introduced. Please try again"
@@ -93,7 +99,7 @@ def newConversionRate ():
         else:
             print(newConversionRateError)
 
-
+## Main program ##
 dollarToGBP = 0.74
 euroToGBP = 0.83
 gbpToDollar = 1.36
@@ -113,3 +119,4 @@ while end != "n":
     endInput = "Do you want to process more conversions?(y/n) "
     endError = "The answer selected does not exist. Please only use ‘y’ for yes and ‘n’ for no."
     end = checkYesNo(endInput, endError)
+    print("Goodbye!")
