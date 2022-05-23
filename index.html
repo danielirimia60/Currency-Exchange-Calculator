@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="index.css">
+
+    <title>Currency Converter</title>
+</head>
+<body>
+    <main>
+        <h1>Currency exchange calculator</h1>
+        <div class="wrapper">
+            <div class="exchange-opt">
+                <label class="currency-container" data-type="dollar">
+                    Buy $
+                    <input type="radio" checked="checked" name="radio" value="$">
+                    <span class="checkmark"></span>
+                    0.74
+                </label>
+                <label class="currency-container" data-type="euro">
+                    Buy €
+                    <input type="radio" checked="checked" name="radio" value="€">
+                    <span class="checkmark"></span>
+                    0.83
+                </label>
+                <label class="currency-container" data-type="pound">
+                    Sell $
+                    <input type="radio" checked="checked" name="radio" value="£">
+                    <span class="checkmark"></span>
+                    1.36
+                </label>
+                <label class="currency-container" data-type="pound">
+                    Sell €
+                    <input type="radio" checked="checked" name="radio" value="£">
+                    <span class="checkmark"></span>
+                    1.22
+                </label>
+            </div>
+            <div class="exchange-res">
+                <form>
+                    <label for="value" class="value-to-exchange">Amount to exchange</label>
+                    <input type="text" name="value" required>
+                    <input type="button" value="Calculate">                   
+                </form>
+                <h3 class="result">Amount to receive: </h3>
+            </div>
+        </div>
+    </main>
+    <script src="./Currency_converter.js" defer></script>
+</body>
+</html>
