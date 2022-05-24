@@ -21,7 +21,7 @@
                 <div class="amount">
                     <form>
                         <label for="amount">Amount</label>
-                        <input type="text" name="amount" required>
+                        <input type="text" name="amount" id="amount" placeholder="" required>
                     </form>
                 </div>
                 <div class="from">
@@ -50,10 +50,16 @@
             </div>
             <div class="output-field">
                 <div class="output-result">
-                    <p id="result-convertedText">1.00 US Dollar =</p>
-                    <p id="result-bigRate">0.93<span class="decimal-rate">785642</span> Euros</p>
+                    <p id="result-convertedText">
+                        <span id="inputValue"></span>
+                        <span id="inputCurrency"></span>
+                    </p>
+                    <p id="result-bigRate">
+                        <span id="finalResult"></span> 
+                        <span class="decimal-rate">
+                        </span><span id="output-currency"></span></p>
                 </div>
-                <button>Convert</button>
+                <button onclick="showResult()">Convert</button>
             </div>
         </div>
     </main>
