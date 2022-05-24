@@ -102,7 +102,7 @@ label {
     height: 3.5em;
     border-radius: 50%;
     align-self: flex-end;
-    margin-bottom: .2em;
+    margin-bottom: .5em;
     background-color: #fff;
     border: .5px solid hsl(0, 0%, 70%);
     cursor: pointer;
@@ -203,5 +203,8 @@ option {
 
     .output-field {
         padding-inline: 3em;
+    }
+    h1 {
+        margin-top: 2vh;
     }
 }
