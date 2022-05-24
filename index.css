@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 18px;
+    }
+}
+
 body {
     width: 100%;
     height: 100vh;
@@ -20,112 +30,178 @@ body {
 main {
     grid-area: 1 / 1;
     display: grid;
+    grid-template: 1fr / 1fr;
 }
 
 h1 {
     grid-area: 1 / 1;
     justify-self: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Lato', sans-serif;
     color: rgb(0, 34, 63);
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
     padding: 1em;
+    margin-top: 10vh;
 }
 
 .wrapper {
     grid-area: 1 / 1;
     place-self: center;
     width: 50%;
-    height: 50%;
-    background-color: hsl(0, 0%, 94%);
+    background-color: hsl(0, 0%, 100%);
     border: 1px rgba(63, 63, 63, 0.247) solid;
     border-radius: 20px;
-    box-shadow: 0px 12px 37px -9px rgba(54,54,54,0.47);
+    box-shadow: rgb(35 55 80 / 30%) 0px 6px 12px;
     display: flex;
     flex-direction: column;
-
 }
 
-.exchange-opt {
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.07rem;
+    padding-bottom: .5em;
+}
+
+.input-field {
     display: flex;
     justify-content: space-around;
+    padding: 2em;
+    padding-top: 4em;
+    padding-bottom: 1em;
 }
 
-.currency-container {
-    padding: 3em;
-    margin-top: .5em;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(109, 109, 109);
+.amount, .from , .to {
+    width: 100%;
+    max-width: 20em;
 }
 
-.currency-container input {
-    margin: .5em;
-}
-
-.exchange-res {
-    margin: 0 auto;
+.amount form{
     display: flex;
     flex-direction: column;
 }
 
-.exchange-res form {
-    display: grid;
-    justify-content: start;
-    grid-template: 1fr 1fr / 1fr 1fr;
-}
-
-.exchange-res form .value-to-exchange {
-    grid-area: 1 / 1;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    margin: 1em;
-    text-align: center;
-}
-
-.exchange-res form input[type="text"] {
-    grid-area: 1 / 2;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(109, 109, 109);
-    font-size: 1.2rem;
-    text-align: center;
-    margin: .5em;
-    width: 50%;
-    height: 50%;
-}
-
-.exchange-res form input[type="button"] {
-    grid-row: 2;
-    grid-column: 1 / span 2;
-    margin: 1em;
-    margin-left: 3em;
-    width: 30%;
-    padding: .5em;
-    border: transparent solid 1px;
-    border-radius: 30px;
-    background-color: rgb(47, 163, 218);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    color: rgb(238, 238, 238);
-    font-weight: 200;
-    letter-spacing: .07em;
-    transition: 500ms ease;
-    box-shadow: 1px 3px 12px 1px rgba(54,54,54,0.3);
-}
-
-.exchange-res form input[type="button"]:hover {
-    color: rgb(47, 163, 218);
-    background-color: rgb(238, 238, 238);
-    border: rgb(47, 163, 218) solid 1px;
-}
-
-input[type="radio"]:checked {
-    color: rgb(47, 163, 218);
-}
-
-.result {
-    margin-top: 2em;
-    margin-left: 2em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
+.amount input {
+    padding: .95em;
+    border: .5px solid hsl(0, 0%, 70%);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
     font-weight: 400;
+    
+}
+
+.from form{
+    display: flex;
+    flex-direction: column;
+}
+
+.exchange {
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-bottom: .2em;
+    background-color: #fff;
+    border: .5px solid hsl(0, 0%, 70%);
+    cursor: pointer;
+}
+
+.exchange img {
+    width: 35%;
+    height: 35%;
+    vertical-align: middle;
+    filter: invert(29%) sepia(53%) saturate(2663%) hue-rotate(195deg) brightness(96%) contrast(107%);
+}
+
+.to form{
+    display: flex;
+    flex-direction: column;
+}
+
+.output-field {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 4em;
+    padding-top: 1em;
+    padding-bottom: 4em;
+}
+
+.from select {
+    padding: .9em;
+    border: .5px solid hsl(0, 0%, 70%);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.to select {
+    padding: .9em;
+    border: .5px solid hsl(0, 0%, 70%);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.to select:focus , .from select:focus , .amount input:focus {
+    outline: none !important;
+    border: .5px solid #0071eb;
+}
+
+option {
+    cursor: pointer;
+}
+
+.output-field button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    border: none;
+    background-color: #0071eb;
+    padding-block: .7em;
+    padding-inline: 1.4em;
+    border-radius: 10px;
+    color: #fff;
+    transition: 300ms ease-in-out;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.output-field button:hover {
+    background-color: #1c8df9;
+    box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.71);
+}
+
+#result-convertedText {
+    color: hsl(221, 14%, 42%);
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding-block: 1em;
+}
+
+#result-bigRate {
+    color: hsl(220, 31%, 26%);
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.decimal-rate {
+    color: hsl(220, 9%, 66%);
+}
+
+@media screen and (max-width: 1500px) {
+    .wrapper {
+        width: 90%;
+    }
+
+    .output-field {
+        padding-inline: 3em;
+    }
 }
