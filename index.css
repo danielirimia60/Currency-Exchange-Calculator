@@ -82,6 +82,11 @@ label {
     flex-direction: column;
 }
 
+.amountLabel {
+    position: relative;
+    overflow: hidden;
+}
+
 .amount input {
     padding: .95em;
     border: .5px solid hsl(0, 0%, 70%);
@@ -89,7 +94,17 @@ label {
     font-size: 1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    
+}
+
+.amountInput {
+    display: none;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    font-size: 11px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    color: red;
 }
 
 .from form{
@@ -179,17 +194,18 @@ option {
 
 #result-convertedText {
     color: hsl(221, 14%, 42%);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-stretch: 100%;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding-block: 1em;
 }
 
 #result-bigRate {
     color: hsl(220, 31%, 26%);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 1.875rem;
 }
 
 .decimal-rate {
