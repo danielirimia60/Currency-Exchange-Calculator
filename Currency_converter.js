@@ -1,94 +1,144 @@
 //Currency exchange calculator
 
-const amountInput = document.getElementById('amount').value;
-const exchangeFrom = document.getElementById('from').value;
-const exchangeTo = document.getElementById('to').value;
+// HTML selectors
 const inputField = document.getElementById('amount');
 const inputFrom = document.getElementById('from');
 const inputTo = document.getElementById('to');
 const outputCurrency = document.getElementById('output-currency');
 const inputCurrency = document.getElementById('inputCurrency');
 const inputValue = document.getElementById('inputValue');
-const finalResult = document.getElementById('finalResult');
 
-let gbpToUsd = 1.2456;
-let usdToGbp = 0.8567;
-let gbpToEur = 1.5567;
-let eurToGbp = 0.9345;
-let usdToEur = 0.8734;
-let eurToUsd = 1.1353;
+// Exchange variables
+let gbpToUsd = 1.258;
+let usdToGbp = 0.794;
+let gbpToEur = 1.175;
+let eurToGbp = 0.850;
+let usdToEur = 0.934;
+let eurToUsd = 1.070;
 
+// Page reload when currency is changed
+const currArr = [document.querySelector('.usdF'), document.querySelector('.usdI'), document.querySelector('.gbpF'), document.querySelector('.gbpI'), document.querySelector('.eurF'), document.querySelector('.eurI')];
+
+currArr.forEach(entry => {
+    entry.addEventListener('click', function() {
+        window.location.reload();
+    })
+});
+
+// Get user input value
+const getVal = () => {
+    let val = inputField.value;
+    val = parseFloat(val);
+    return val;
+}
+const amountInput = getVal();
+
+// Set input field placeholder
 const setCurrency = () => {
-    if(exchangeFrom == 'usd') {
+    if(inputFrom.value == 'usd') {
         inputField.placeholder = '$ 1.00';
-    }else if(exchangeFrom == 'eur') {
+    }else if(inputFrom.value == 'eur') {
         inputField.placeholder = '€ 1.00';
-    }else if(exchangeFrom == 'gbp') {
+    }else if(inputFrom.value == 'gbp') {
         inputField.placeholder = '£ 1.00';
     }
 }
-
 inputFrom.onchange = setCurrency();
 
-const setOutputCurrency = () => {
-    if(exchangeTo == 'usd') {
-        outputCurrency.innerHTML = 'Dollars';
-    }else if(exchangeTo == 'eur') {
-        outputCurrency.innerHTML = 'Euros';
-    }else if(exchangeTo == 'gbp') {
-        outputCurrency.innerHTML = 'Pounds';
-    }
-}
-
+// Set input value and currency for output result. If there's no value then default to 1 + input currency
 const setExchangeOutput = () => {
-    if(amountInput <= 1) {
+    if(inputField.value <= 1 || inputField.value == undefined) {
         inputValue.innerHTML = '1.00 ';
-        if(exchangeFrom == 'usd') {
+        if(inputFrom.value == 'usd') {
             inputCurrency.innerHTML = 'US Dollar =';
-        }else if(exchangeFrom == 'eur') {
+        }else if(inputFrom.value == 'eur') {
             inputCurrency.innerHTML = 'Euro =';
-        }else if(exchangeFrom == 'gbp') {
+        }else if(inputFrom.value == 'gbp') {
             inputCurrency.innerHTML = 'British Pound =';
         }
     }else {
         inputValue.innerHTML = `${amountInput} `;
-        if(exchangeFrom == 'usd') {
+        if(inputFrom.value == 'usd') {
             inputCurrency.innerHTML = 'US Dollars =';
-        }else if(exchangeFrom == 'eur') {
+        }else if(inputFrom.value == 'eur') {
             inputCurrency.innerHTML = 'Euros =';
-        }else if(exchangeFrom == 'gbp') {
+        }else if(inputFrom.value == 'gbp') {
             inputCurrency.innerHTML = 'British Pounds =';
         }
     }
 }
 
+// Set output result currency
+const setOutputCurrency = () => {
+    if(inputTo.value == 'usd') {
+        outputCurrency.innerHTML = 'Dollars';
+    }else if(inputTo.value == 'eur') {
+        outputCurrency.innerHTML = 'Euros';
+    }else if(inputTo.value == 'gbp') {
+        outputCurrency.innerHTML = 'Pounds';
+    }
+}
+
+// Calculate the final exchange result
 const exchange = () => {
     let result;
-    if(amountInput) {
-        if(exchangeFrom == 'gbp' && exchangeTo == 'usd') {
+
+    // If no value was introduced default to 1 for the exchange
+    if(inputField.value == 0 || inputField.value == undefined) {
+        if(inputFrom.value == 'gbp' && inputTo.value == 'usd') {
+            result = 1 * gbpToUsd;
+        }else if(inputFrom.value == 'usd' && inputTo.value == 'gbp') {
+            result = 1 * usdToGbp;
+        }else if(inputFrom.value == 'gbp' && inputTo.value == 'eur') {
+            result = 1 * gbpToEur;
+        }else if(inputFrom.value == 'eur' && inputTo.value == 'gbp') {
+            result = 1 * eurToGbp;
+        }else if(inputFrom.value == 'usd' && inputTo.value == 'eur') {
+            result = 1 * usdToEur;
+        }else if(inputFrom.value == 'eur' && inputTo.value == 'usd') {
+            result = 1 * eurToUsd;
+        }
+     // If a value was introduced use it to calculate the result   
+    }else{
+        if(inputFrom.value == 'gbp' && inputTo.value == 'usd') {
             result = amountInput * gbpToUsd;
-        }else if(exchangeFrom == 'usd' && exchangeTo == 'gbp') {
+        }else if(inputFrom.value == 'usd' && inputTo.value == 'gbp') {
             result = amountInput * usdToGbp;
-        }else if(exchangeFrom == 'gbp' && exchangeTo == 'eur') {
+        }else if(inputFrom.value == 'gbp' && inputTo.value == 'eur') {
             result = amountInput * gbpToEur;
-        }else if(exchangeFrom == 'eur' && exchangeTo == 'gbp') {
+        }else if(inputFrom.value == 'eur' && inputTo.value == 'gbp') {
             result = amountInput * eurToGbp;
-        }else if(exchangeFrom == 'usd' && exchangeTo == 'eur') {
+        }else if(inputFrom.value == 'usd' && inputTo.value == 'eur') {
             result = amountInput * usdToEur;
-        }else if(exchangeFrom == 'eur' && exchangeTo == 'usd') {
+        }else if(inputFrom.value == 'eur' && inputTo.value == 'usd') {
             result = amountInput * eurToUsd;
         }
-    }else {
-        result = 'Please enter a number';
     }
 
     return result;
 }
 
+// Store result in exchangeResult with a fixed decimal places of 5 then split it into an array and reverse it
+// Take the first 3 numbers and reverse them back as the last 3 decimals of the result
+// Take the rest of the array and remove the first numbers (which are the last before reverse)
 let exchangeResult = exchange();
+exchangeResult = exchangeResult.toFixed(5);
+let splitResult = exchangeResult.split('');
+splitResult = splitResult.reverse();
+let decimalResult = [splitResult[0], splitResult[1], splitResult[2]];
+decimalResult = decimalResult.reverse();
+let firstResult = splitResult;
+let removedResult = firstResult.splice(0,3);
+firstResult = firstResult.reverse();
 
+// Join the resulted arrays into 2 different numbers
+const twoDigitResult = firstResult.join('');
+const threeDigitResult = decimalResult.join('');
+
+// Show the results when the convert button is pressed
 const showResult = () => {
     inputTo.onchange = setOutputCurrency();
     inputFrom.onchange = setExchangeOutput();
-    finalResult.innerHTML = `${exchangeResult} `;
+    document.getElementById('finalResult').innerHTML = `${twoDigitResult}`;
+    document.querySelector('.decimal-rate').innerHTML = `${threeDigitResult }`;
 }
