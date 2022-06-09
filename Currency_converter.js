@@ -26,10 +26,10 @@ currArr.forEach(entry => {
 });
 
 // Get user input value
-const getVal = () => {
-    let val = inputField.value;
-    val = parseFloat(val);
-    return val;
+const getVal = (val) => {
+    val = inputField.value;
+    const inputValue = parseFloat(val);
+    return inputValue;
 }
 const amountInput = getVal();
 
