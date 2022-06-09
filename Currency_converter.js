@@ -26,11 +26,12 @@ currArr.forEach(entry => {
 });
 
 // Get user input value
-const getVal = (val) => {
-    val = inputField.value;
-    const inputValue = parseFloat(val);
-    return inputValue;
-}
+
+inputField.addEventListener('click', getVal() {
+    let val = parseFloat(inputField.value);
+    return val
+});
+
 const amountInput = getVal();
 
 // Set input field placeholder
