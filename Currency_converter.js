@@ -26,13 +26,12 @@ currArr.forEach(entry => {
 });
 
 // Get user input value
-const getVal = () => {
+
+const amountInput = (function() {
     let val = inputField.value;
     val = parseFloat(val);
     return val;
-}
-
-const amountInput = getVal();
+})();
 
 // Set input field placeholder
 const setCurrency = () => {
@@ -44,7 +43,8 @@ const setCurrency = () => {
         inputField.placeholder = '£ 1.00';
     }
 }
-inputFrom.onchange = setCurrency();
+
+setCurrency();
 
 // Set input value and currency for output result. If there's no value then default to 1 + input currency
 const setExchangeOutput = () => {
@@ -69,6 +69,7 @@ const setExchangeOutput = () => {
     }
 }
 
+
 // Set output result currency
 const setOutputCurrency = () => {
     if(inputTo.value == 'usd') {
@@ -79,6 +80,7 @@ const setOutputCurrency = () => {
         outputCurrency.innerHTML = 'Pounds';
     }
 }
+
 
 // Calculate the final exchange result
 const exchange = () => {
